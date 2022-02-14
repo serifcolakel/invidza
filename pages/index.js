@@ -147,7 +147,7 @@ export default function Home() {
         <div className={styles.content}>
           <div className={styles.discover}>
             <p className={styles.text}>Kurumsal Kullanıcı ya da Etkinlik Organizatörü müsün?</p>
-            <p className={styles.textB}>Daha öncesinde Invidza'ya güvenen markalarımıza katılmak istersen, kurumsal çözümlerimizle tanışmak için formu doldurabilirsin.</p>
+            <p className={styles.textB}>Daha öncesinde Invidza ya güvenen markalarımıza katılmak istersen, kurumsal çözümlerimizle tanışmak için formu doldurabilirsin.</p>
 
             <Link href="/giris">
               <a className={styles.special}>Bana Ulaşın</a>
@@ -156,7 +156,7 @@ export default function Home() {
           <img src="https://invidza.com/static/img/home/kurumsal_ozel_davetiye.png" alt="kurumsal_ozel_davetiye" className={styles.SvgFirstImage} />
         </div>
         <p className={styles.textVideo}>Kullanıcılarımız Neden <br />
-          Invidza’yı Tercih Ediyorlar?</p>
+          Invidzayı Tercih Ediyorlar?</p>
         <Sliders data={feedBack} show={2} imageClass={styles.userIcon} />
       </main>
       <footer className={styles.footer}>
