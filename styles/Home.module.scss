@@ -1,0 +1,331 @@
+@import "./veriables", "./breakpoints", "./mixins", "./navbar";
+
+.container {
+  min-height: 50vh;
+
+  @include flexCenter(column);
+}
+.sliders {
+  width: 80%;
+  @include md {
+    width: 100%;
+  }
+  .slider {
+    width: 50%;
+    padding: 20px;
+    gap: 10px;
+    position: relative;
+    background-color: #fff;
+    @include flexCenter(row, center, center);
+    @include md {
+      padding: 20px;
+    }
+    .sliderText {
+      @include flexCenter(row, flex-start);
+      gap: 30px;
+      .sliderImg {
+        width: 236px;
+        background-color: #fff;
+        height: 360px;
+        object-fit: cover;
+        cursor: pointer;
+        margin: 0 auto;
+        border: 2px solid $info;
+      }
+      .userIcon {
+        width: 80px;
+        height: 80px;
+        background-color: #fff;
+        border-radius: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  .sliderIconNext,
+  .sliderIconPrev {
+    color: $primary;
+    cursor: pointer;
+  }
+  .sliderIconNext:hover,
+  .sliderIconPrev:hover {
+    color: $info;
+  }
+  .sliderIconPrev {
+    position: absolute;
+    bottom: 50%;
+    left: -30px;
+  }
+  .sliderIconNext {
+    position: absolute;
+    bottom: 50%;
+    right: -30px;
+  }
+}
+
+.main {
+  width: 100%;
+  height: auto;
+  @include flexCenter(column, flex-start);
+  @include backgroundImage($mainBackGround, 100%);
+  @include md {
+    padding: 15rem 22rem;
+    height: 430vh;
+  }
+  .content {
+    width: 80%;
+    padding-top: 5rem;
+    @include flexCenter(row, space-around, flex-start);
+    @include md {
+      width: 100%;
+    }
+    .SvgFirstImage {
+      display: none;
+      @include md {
+        display: block;
+      }
+    }
+    .discover {
+      width: 100%;
+      @include md {
+        width: 40%;
+      }
+      .login {
+        @include button($info, $white, $info, $info, 175px, 55px);
+        border-radius: 10px;
+
+        @include flexCenter();
+      }
+      .text {
+        @include text($info, 2.25rem, 600, start);
+      }
+      .textA {
+        @include text($primary, 1.5rem, 400, start);
+      }
+      .textB {
+        @include text($grayDark, 1rem, 400, start);
+      }
+    }
+  }
+  .login {
+    @include button($info, $white, $info, $info, 250px, 80px);
+    border-radius: 10px;
+    padding: 15px;
+    @include flexCenter();
+    @include md {
+      padding: 15px;
+    }
+  }
+  .special {
+    @include button($info, $white, $info, $info, 250px, 55px);
+    border-radius: 10px;
+    @include flexCenter();
+  }
+  .cards {
+    padding-top: 5rem;
+    width: 100%;
+    gap: 30px;
+    @include md {
+      gap: 50px;
+      padding-top: 150px;
+      @include flexCenter(row);
+    }
+    @include flexCenter(column, space-around, center);
+    .card {
+      width: 90%;
+      @include md {
+        width: 25%;
+        height: 360px;
+        padding: 2rem 3rem;
+      }
+      padding: 1rem 1.5rem;
+      @include flexCenter(column);
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+      background-color: #fff;
+      h2 {
+        color: $info;
+      }
+      p {
+        color: $grayDark;
+        letter-spacing: 1px;
+      }
+    }
+  }
+  .textVideo {
+    width: 80%;
+    @include text($info, 1.5rem, 700, center);
+    @include md {
+      @include text($info, 2rem, 700, center);
+    }
+  }
+  .whyInvizdaCard {
+    display: grid;
+    width: 90%;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    p {
+      display: none;
+    }
+    h2 {
+      @include text($info, 1.25rem, 700, flex-start);
+      @include md {
+        @include text($info, 1.25rem, 700, flex-start);
+      }
+    }
+    @include md {
+      p {
+        @include text($grayDark, 1rem, 400, flex-start);
+        display: block;
+      }
+      grid-template-columns: 1fr 1fr;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 5px;
+      width: 100%;
+      height: 116px;
+      @include md {
+        height: 144px;
+      }
+      .cardImages {
+        width: 40%;
+        padding: 15px;
+        img {
+          width: 80%;
+          @include md {
+            width: 100%;
+          }
+        }
+        @include md {
+          @include flexCenter(column);
+          padding: 20px 10px 10px 10px;
+          margin-right: 12px;
+        }
+      }
+      @include flexCenter(row, flex-start, flex-start);
+      box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+.footer {
+  width: 100%;
+  height: auto;
+  background-color: $footer;
+  @include backgroundImage($footerBackGround, 400%);
+  @include flexCenter(column);
+  @include md {
+    height: 372px;
+    @include backgroundImage($footerBackGround, 30%, right);
+  }
+  .footerLink {
+    width: 80%;
+    padding-top: 50px;
+    @include flexCenter(column, flex-start, flex-start);
+    footerImg {
+      margin-right: 50px;
+      width: 30%;
+    }
+
+    @include md {
+      gap: 200px;
+      width: 70%;
+      @include flexCenter(row, center, center);
+    }
+    .footerLinkGrid {
+      width: 70%;
+      display: grid;
+
+      grid-template-columns: 1fr;
+      @include md {
+        grid-template-columns: 2fr 2fr 2fr;
+      }
+      .gridItems {
+        gap: 5px;
+
+        @include flexCenter(column, flex-start, flex-start);
+        @include md {
+          gap: 10px;
+          width: 50%;
+        }
+        p {
+          padding-top: 20px;
+          @include text($white, 1rem, 700, flex-start);
+          @include md {
+            padding-top: 0;
+          }
+        }
+        span {
+          @include text($grayLight, 1rem, 400, flex-start);
+          padding-bottom: 20px;
+        }
+        .footerIcon {
+          color: $white;
+          margin-right: 5px;
+          cursor: pointer;
+          &:hover {
+            color: $info;
+          }
+        }
+        .link {
+          font-weight: 400;
+          color: $white;
+          opacity: 0.9;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+  .footerPrivacy {
+    width: 80%;
+    @include flexCenter(column, flex-start, flex-start);
+    .text {
+      @include text($white, 1rem, 400, flex-start);
+    }
+    .Sozlesme {
+      @include flexCenter(column, flex-start, flex-start);
+      @include md {
+        @include flexCenter(row, flex-start, flex-start);
+      }
+      .link {
+        font-weight: 400;
+        color: $white;
+        opacity: 0.9;
+        padding: 8px 0;
+        @include md {
+          padding: 8px;
+        }
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+
+    @include md {
+      @include flexCenter(row, space-between, center);
+      .link {
+        font-weight: 400;
+        color: $white;
+        opacity: 0.9;
+        border-right: 1px solid $white;
+        padding: 8px;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      .link:nth-child(4) {
+        border-right: none;
+      }
+      .text {
+        @include text($white, 1rem, 400, flex-start);
+      }
+      width: 100%;
+      padding: 0 20rem;
+      margin: 80px auto 0 auto;
+      height: 50px;
+      background-color: $footerBottom;
+    }
+  }
+}

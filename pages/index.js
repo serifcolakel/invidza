@@ -1,68 +1,214 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/Home.module.scss'
+import Navbar from '../components/Navbar';
+import Link from 'next/link';
+import { LogoCartFirst, LogoCartFourth, LogoCartSecond, LogoCartThird, SvgFirstImage } from '../assets/image';
+import Sliders from '../components/Slider';
+import { AiFillInstagram, AiFillYoutube, AiFillFacebook, AiOutlineTwitter, AiFillLinkedin } from 'react-icons/ai';
 
+const cards = [
+  { icon: <LogoCartFirst />, title: "Şablon Seç", description: "Seçenekler arasından etkinliğine ve zevkine en uygun video davetiye şablonu seç." },
+  { icon: <LogoCartSecond />, title: "Kişiselleştir", description: "Seçtiğin video davetiye şablonunu kendine ve davetlilerine özel hâle getir." },
+  { icon: <LogoCartThird />, title: "Hemen Gönder", description: "Oluşturduğun video davetiyeyi, davetli listelerine SMS ya da WhatsApp ile gönder." },
+  { icon: <LogoCartFourth />, title: "Anlık Takip Et", description: "Davetlilerinin davetiyeni izleyip izlemediğini ve etkinliğine katılım durumlarını takip et." }
+
+]
+const whyInvizdaCart = [
+  {
+    imgUrl: "https://invidza.com/static/img/home/1-zaman.png",
+    title: "Zaman Kazandırır",
+    description: "Invidza ile hazır video davetiye şablonlarından birini seçerek saniyeler içinde düzenleyebilir ve davetlilerine özel içeriklerle gönderebilirsin."
+  },
+  {
+    imgUrl: "https://invidza.com/static/img/home/2-tasarruf.png",
+    title: "Tasarruf Sağlar",
+    description: "Invidza, basılı davetiyelerdeki kağıt, baskı, kargo, teslim gibi tüm masrafları ortadan kaldırdığı için tasarruf edebilirsin."
+  },
+  {
+    imgUrl: "https://invidza.com/static/img/home/3-doga.png",
+    title: "Doğayı Korur",
+    description: "Davetiyeni tamamen dijital ortamda oluşturan ve tek bir ağaca bile dokunmadan gönderen Invidza ile doğa dostu bir düğün yapabilirsin."
+  },
+  {
+    imgUrl: "https://invidza.com/static/img/home/4-ozel.png",
+    title: "Özel Hissettirir",
+    description: "Invidza ile ekranlarında kendi isimlerini ve senin hitaplarını gören davetlilerini özel hissettirebilirsin."
+  },
+  {
+    imgUrl: "https://invidza.com/static/img/home/5-takip.png",
+    title: "Takibi Kolaylaştırır",
+    description: "Sipariş öncesi süreçteki tüm üretim bilgilerini ve gönderim sonrasında davetlilerin verdiği cevapları canlı olarak takip edebilirsin."
+  },
+
+  {
+    imgUrl: "https://invidza.com/static/img/home/7-sureci.png",
+    title: "Kullanıcı Dostudur",
+    description: "SMS ya da WhatsApp ile gönderdiğin story - snap boyutundaki video davetiyelerle davetlilerinin deneyimini ve geri dönüşünü kolaylaştırabilirsin."
+  },
+  {
+    imgUrl: "https://invidza.com/static/img/home/6-kullanici.png",
+    title: "Süreci Yönetir",
+    description: "Invidza ile davetlilerinin katılım durumlarını takip edebilir; video davetiyende yol tarifi verebilirsin."
+  },
+  {
+    imgUrl: "https://invidza.com/static/img/home/8-is-yuku.png",
+    title: "İş Yükünü Azaltır",
+    description: "Davetlileri LCV için tekrar aramana gerek kalmaz. Geri dönüş alamadıysan, davetiyeni tekrar gönderebilir, hatırlatma yapabilirsin."
+  },
+]
+const sablon = [
+  { imgUrl: "https://i.hizliresim.com/mbftekf.jpg" },
+  { imgUrl: "https://i.hizliresim.com/hxw8y1l.jpg" },
+  { imgUrl: "https://i.hizliresim.com/lzqd9s9.jpg" },
+  { imgUrl: "https://i.hizliresim.com/n1gkhdu.jpg" },
+  { imgUrl: "https://i.hizliresim.com/rvbu3nt.jpg" },
+  { imgUrl: "https://i.hizliresim.com/3zmj9mm.jpg" },
+  { imgUrl: "https://i.hizliresim.com/qge87ec.jpg" },
+]
+const feedBack = [
+  {
+    imgUrl: "https://media.invidza.com/landing/3.jpg",
+    title: "Özge Kaya",
+    description: "“Invidza’nın en sevdiğim yanı herkese başka davetiye gönderebilmem oldu. Daha ekonomik olacağını düşünerek Invidza ile davetiye hazırlamıştım. Bu sırada yakın arkadaşlarıma farklı şablonlarda daha eğlenceli davetiyeler hazırlayabildim. Güzeldi.”"
+  },
+  {
+    imgUrl: "https://media.invidza.com/landing/2.jpg",
+    title: "F.Burcu Süren",
+    description: "“Düğün davetiyelerinde sadeliği tercih ediyorum. Invidza’da aradığım davetiye modellerini bulabildim. Online ortamdan davetiye gönderme fikri de hoşuma gitti. Özellikle kalabalık bir düğün yapanlara iyi bir seçenek olabilir diye düşünüyorum.”"
+  },
+  {
+    imgUrl: "https://media.invidza.com/landing/1.png",
+    title: "Büşra Turan",
+    description: "“Davetiye masrafları gözümü korkutuyordu. Tam istediğim gibi bir model de bulamamıştım. Invidza ile karşılaşınca ekonomik ve keyifli bir davetiye hazırlayabileceğimi fark ettim. Düğünümün temasına uygun bir şablon seçimi yapıp davetlilerime gönderdim. İyi ki Invidza’yı kullanmışım.”"
+  },
+]
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Video davetiyenizi oluşturun, kişiselleştirin, listenize gönderin | Invidza</title>
         <meta name="description" content="Generated by create next app" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://invidza.com/static/img/logo.svg" />
       </Head>
-
+      <Navbar />
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className={styles.content}>
+          <div className={styles.discover}>
+            <p className={styles.text}>Yeni Nesil Video Davetiye ve LCV Servisi</p>
+            <p className={styles.textA}>Hızlı, Hesaplı ve İnteraktif</p>
+            <p className={styles.textB}>Düğün ya da etkinlik davetiyeni saniyeler içinde hazırla;hemen gönder.</p>
+            <p className={styles.textB}>LCV özelliğiyle davetiyeni izleyenleri ve katılım durumlarını anlık takip et.</p>
+            <Link href="/giris">
+              <a className={styles.login}>Hemen Başla!</a>
+            </Link>
+          </div>
+          <SvgFirstImage />
         </div>
-      </main>
+        <div className={styles.cards}>
+          {cards.map((card, index) => (
+            <div key={index} className={styles.card}>
+              {card.icon}
+              <h2>{card.title}</h2>
+              <p>{card.description}</p>
+            </div>
+          ))}
+        </div>
+        <p className={styles.textVideo}>Invidza video davetiyeler arasından sana uygun
+          olanı seç,özel günlerine değer kat.</p>
+        <Sliders data={sablon} show={4} imageClass={styles.sliderImg} />
+        <Link href="/giris">
+          <a className={styles.login}>Tüm Davetiye Şablonlarını Gör</a>
+        </Link>
+        <p className={styles.textVideo}>Neden invizda?</p>
+        <div className={styles.whyInvizdaCard}>
+          {whyInvizdaCart.map((card, index) => (
+            <div key={index} className={styles.card}>
+              <div className={styles.cardImages}>
+                <img src={card.imgUrl} alt={card.title} />
+              </div>
+              <div>
+                <h2>{card.title}</h2>
+                <p>{card.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.content}>
+          <SvgFirstImage />
+          <div className={styles.discover}>
+            <p className={styles.text}>Özel Davetiye Hazırlat</p>
+            <p className={styles.textB}>Şablon kütüphanesinde aradığını bulamadın mı?</p>
+            <p className={styles.textB}>Hemen bize ulaş, sana özel şablon hazırlayalım.</p>
+            <Link href="/giris">
+              <a className={styles.special}>Özel Davetiye Hazırlat</a>
+            </Link>
+          </div>
+        </div>
+        <div className={styles.content}>
+          <div className={styles.discover}>
+            <p className={styles.text}>Kurumsal Kullanıcı ya da Etkinlik Organizatörü müsün?</p>
+            <p className={styles.textB}>Daha öncesinde Invidza'ya güvenen markalarımıza katılmak istersen, kurumsal çözümlerimizle tanışmak için formu doldurabilirsin.</p>
 
+            <Link href="/giris">
+              <a className={styles.special}>Bana Ulaşın</a>
+            </Link>
+          </div>
+          <img src="https://invidza.com/static/img/home/kurumsal_ozel_davetiye.png" alt="kurumsal_ozel_davetiye" className={styles.SvgFirstImage} />
+        </div>
+        <p className={styles.textVideo}>Kullanıcılarımız Neden <br />
+          Invidza’yı Tercih Ediyorlar?</p>
+        <Sliders data={feedBack} show={2} imageClass={styles.userIcon} />
+      </main>
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
+        <div className={styles.footerLink}>
+          <div className={styles.footerImg}>
+            <img src="https://invidza.com/static/img/invidza-logo-invert.png" alt="invidza-logo-invert" />
+          </div>
+          <div className={styles.footerLinkGrid}>
+            <div className={styles.gridItems}>
+              <p>İnvidza</p>
+              {["Hakkımızda", "Destek", "Blog", "Kullanım Klavuzu", "Sıkça Sorulan Sorular", "İletişim"].map((item, index) => (
+                <Link key={index} href="/sablon">
+                  <a className={styles.link}>{item}</a>
+                </Link>
+              ))}
+            </div>
+            <div className={styles.gridItems}>
+              <p>Davetiye Şablonları</p>
+              {["Düğün Davetiyesi", "Nişan Davetiyesi", "Etkinlik Davetiyesi", "Kutlama Davetiyesi", "Kurumsal Davetiyesi", "Eğitim Davetiyesi"].map((item, index) => (
+                <Link key={index} href="/sablon">
+                  <a className={styles.link}>{item}</a>
+                </Link>
+              ))}
+            </div>
+            <div className={styles.gridItems} >
+              <p>İletişim</p>
+              <span>Mustafa Kemal Mah.Dumlupınar Bul No: 280 G, D:1240, 06510 Çankaya / Ankara</span>
+              <div>
+                <AiFillFacebook className={styles.footerIcon} size={30} />
+                <AiOutlineTwitter className={styles.footerIcon} size={30} />
+                <AiFillInstagram className={styles.footerIcon} size={30} />
+                <AiFillLinkedin className={styles.footerIcon} size={30} />
+                <AiFillYoutube className={styles.footerIcon} size={30} />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles.footerPrivacy}>
+          <p className={styles.text}>Copyright © 2019 siu.com.tr</p>
+          <div className={styles.Sozlesme}>
+            {["Gizlilik Politikası", "Kullanıcı Sözleşmesi", "Mesafeli Satış Sözleşmesi", "Satış, iade ve Değişim"].map((item, index) => (
+              <Link key={index} href="/sablon">
+                <a className={styles.link}>{item}</a>
+              </Link>
+            ))}
+
+          </div>
+          <div>
+            <img src="https://invidza.com/static/img/f_mastercard.png" alt="f_mastercard" />
+            <img src="https://invidza.com/static/img/f_visa.png" alt="f_visa" />
+          </div>
+        </div>
       </footer>
     </div>
   )
